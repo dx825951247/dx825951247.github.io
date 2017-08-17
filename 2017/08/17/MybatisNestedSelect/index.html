@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Oracle,Mybatis,管理查询," />
 
 
 
@@ -94,17 +94,18 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="resultMap constructor - 类在实例化时,用来注入结果到构造方法中 dArg - ID 参数;标记结果作为 ID 可以帮助提高整体效能 arg - 注入到构造方法的一个普通结果   id – 一个 ID 结果;标记结果作为 ID 可以帮助提高整体效能 result – 注入到字段或 JavaBean 属性的普通结果 association – 一个复杂的类型关联;许多结果将包成">
+<meta name="keywords" content="Oracle,Mybatis,管理查询">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="www.duxing.men/2017/08/07/hello-world/index.html">
+<meta property="og:title" content="Mybatis嵌套查询传入多个参数">
+<meta property="og:url" content="www.duxing.men/2017/08/17/MybatisNestedSelect/index.html">
 <meta property="og:site_name" content="castellan">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="resultMap constructor - 类在实例化时,用来注入结果到构造方法中 dArg - ID 参数;标记结果作为 ID 可以帮助提高整体效能 arg - 注入到构造方法的一个普通结果   id – 一个 ID 结果;标记结果作为 ID 可以帮助提高整体效能 result – 注入到字段或 JavaBean 属性的普通结果 association – 一个复杂的类型关联;许多结果将包成">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-07T14:27:30.381Z">
+<meta property="og:updated_time" content="2017-08-17T11:31:14.503Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="Mybatis嵌套查询传入多个参数">
+<meta name="twitter:description" content="resultMap constructor - 类在实例化时,用来注入结果到构造方法中 dArg - ID 参数;标记结果作为 ID 可以帮助提高整体效能 arg - 注入到构造方法的一个普通结果   id – 一个 ID 结果;标记结果作为 ID 可以帮助提高整体效能 result – 注入到字段或 JavaBean 属性的普通结果 association – 一个复杂的类型关联;许多结果将包成">
 
 
 
@@ -133,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="www.duxing.men/2017/08/07/hello-world/"/>
+  <link rel="canonical" href="www.duxing.men/2017/08/17/MybatisNestedSelect/"/>
 
 
 
 
 
-  <title>Hello World | castellan</title>
+  <title>Mybatis嵌套查询传入多个参数 | castellan</title>
   
 
 
@@ -282,7 +283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="www.duxing.men/2017/08/07/hello-world/">
+    <link itemprop="mainEntityOfPage" href="www.duxing.men/2017/08/17/MybatisNestedSelect/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dx">
@@ -299,7 +300,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">Mybatis嵌套查询传入多个参数</h1>
         
 
         <div class="post-meta">
@@ -311,8 +312,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-07T22:27:30+08:00">
-                2017-08-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-17T17:14:31+08:00">
+                2017-08-17
               </time>
             
 
@@ -321,6 +322,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">Mybatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -349,15 +372,27 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h1 id="resultMap"><a href="#resultMap" class="headerlink" title="resultMap"></a>resultMap</h1><ul>
+<li>constructor - 类在实例化时,用来注入结果到构造方法中<ul>
+<li>dArg - ID 参数;标记结果作为 ID 可以帮助提高整体效能</li>
+<li>arg - 注入到构造方法的一个普通结果</li>
+</ul>
+</li>
+<li>id – 一个 ID 结果;标记结果作为 ID 可以帮助提高整体效能</li>
+<li>result – 注入到字段或 JavaBean 属性的普通结果</li>
+<li>association – 一个复杂的类型关联;许多结果将包成这种类型<br>  嵌入结果映射 – 结果映射自身的关联,或者参考一个</li>
+<li><p>collection – 复杂类型的集<br>  嵌套嵌入结果映射, 结果映射自身的集,或者参考一个</p>
+<blockquote>
+<p>collection标签中的select属性，通过这个属性，通过ID引用另一个加载复杂类型的映射语句。<br>从指定列属性中返回的值，将作为参数设置给目标select 语句。<br>注意：在处理组合键时，也就是传入多个参数时，可以使用<code>column=”{pro1=col1,pro2=col2}”</code>这样的语法，这就会把prop1和prop2设置到目标嵌套语句的参数对象中，在子查询中就可以作为参数使用#{pro1},#{pro2}。</p>
+</blockquote>
+</li>
+<li><p>discriminator – 使用结果值来决定使用哪个结果映射</p>
+<ul>
+<li>case – 基于某些值的结果映射<br>嵌入结果映射 – 这种情形结果也映射它本身,因此可以包含很多相 同的元素,或者它可以参照一个外部的结果映射。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"getTest"</span> <span class="attr">parameterType</span>=<span class="string">"Test"</span> <span class="attr">resultMap</span>=<span class="string">"getTestMap"</span>&gt;</span></div><div class="line">　select </div><div class="line">　　AAA, </div><div class="line">　　BBB, </div><div class="line">　　CCC</div><div class="line">　from test </div><div class="line">　where </div><div class="line">　　'1' = '1'</div><div class="line">　and </div><div class="line">　　AAA = #&#123;aaa,jdbcType=VARCHAR&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"getTestMap"</span> <span class="attr">type</span>=<span class="string">"Test"</span>&gt;</span></div><div class="line">　<span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">"AAA"</span> <span class="attr">property</span>=<span class="string">"aaa"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></div><div class="line">　<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"BBB"</span> <span class="attr">property</span>=<span class="string">"bbb"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></div><div class="line">　<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"CCC"</span> <span class="attr">property</span>=<span class="string">"ccc"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></div><div class="line">　<span class="tag">&lt;<span class="name">collection</span> <span class="attr">property</span>=<span class="string">"valueList"</span> <span class="attr">column</span>=<span class="string">"&#123;aaa=AAA,bbb=BBB&#125;"</span> <span class="attr">ofType</span>=<span class="string">"TestValue"</span> <span class="attr">javaType</span>=<span class="string">"ArrayList"</span> <span class="attr">select</span>=<span class="string">"selectTestValues"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectTestValues"</span> <span class="attr">resultMap</span>=<span class="string">"selectTestValuesMap"</span>&gt;</span></div><div class="line">　select </div><div class="line">　　DDD, </div><div class="line">　　EEE</div><div class="line">　from test_value</div><div class="line">　where </div><div class="line">　　AAA = #&#123;aaa,jdbcType=VARCHAR&#125;</div><div class="line">　and </div><div class="line">　　BBB = #&#123;bbb,jdbcType=VARCHAR&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"selectTestValuesMap"</span> <span class="attr">type</span>=<span class="string">"TestValue"</span> &gt;</span></div><div class="line">　<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"DDD"</span> <span class="attr">property</span>=<span class="string">"ddd"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></div><div class="line">　<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"EEE"</span> <span class="attr">property</span>=<span class="string">"eee"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -373,6 +408,16 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Oracle/" rel="tag"># Oracle</a>
+          
+            <a href="/tags/Mybatis/" rel="tag"># Mybatis</a>
+          
+            <a href="/tags/管理查询/" rel="tag"># 管理查询</a>
+          
+        </div>
+      
 
       
       
@@ -382,15 +427,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/08/08/oracleInsert/" rel="next" title="Oracle数据库批量插入的三种方式">
+                <i class="fa fa-chevron-left"></i> Oracle数据库批量插入的三种方式
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/08/oracleInsert/" rel="prev" title="Oracle数据库批量插入的三种方式">
-                Oracle数据库批量插入的三种方式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -524,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#resultMap"><span class="nav-number">1.</span> <span class="nav-text">resultMap</span></a></li></ol></div>
             
 
           </div>
