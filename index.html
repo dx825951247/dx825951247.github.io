@@ -385,6 +385,7 @@
 <li>用异常来控制业务流程,可以把错误处理集中在一处,对客户端的代码编写更加友好,代码清晰简洁，在业务代码里面不会有很多错误码的判断。缺点就是创建异常堆栈是需要时间和空间的,异常处理性能开销在于<br>-是一个synchronized方法(主因)<br>-需要填充线程运行堆栈信息<br>但是可以通过复写业务异常基类的方法Throwable.fillInStackTrace()来提示性能。<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Throwable <span class="title">fillInStackTrace</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
+<p>参考文章:<br><a href="https://segmentfault.com/q/1010000004308144?_ea=564305" target="_blank" rel="external">https://segmentfault.com/q/1010000004308144?_ea=564305</a><br><a href="http://blog.csdn.net/liujun13579/article/details/7742380" target="_blank" rel="external">http://blog.csdn.net/liujun13579/article/details/7742380</a></p>
 
           
         
