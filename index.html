@@ -985,8 +985,7 @@
         
           
             <h1 id="一-批量插入三种方式"><a href="#一-批量插入三种方式" class="headerlink" title="一.批量插入三种方式"></a>一.批量插入三种方式</h1><blockquote>
-<p>1.使用union all</p>
-</blockquote>
+<h2 id="1-使用union-all"><a href="#1-使用union-all" class="headerlink" title="1.使用union all"></a>1.使用union all</h2></blockquote>
 <ul>
 <li>sql中没有VALUES</li>
 <li><foreach>中的select…插入数据…from dual<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">INSERT INTO STUDENT</div><div class="line">　(</div><div class="line">　　NAME，</div><div class="line">　　AGE</div><div class="line">　)</div><div class="line"><span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"templateDetial"</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">separator</span>=<span class="string">"union all"</span> &gt;</span></div><div class="line">　SELECT </div><div class="line">　　#&#123;item.name&#125;, </div><div class="line">　　#&#123;item.age&#125;</div><div class="line">　FROM DUAL	</div><div class="line"><span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -994,8 +993,7 @@
 </ul>
 <hr>
 <blockquote>
-<p>2.insert all</p>
-</blockquote>
+<h2 id="2-insert-all"><a href="#2-insert-all" class="headerlink" title="2.insert all"></a>2.insert all</h2></blockquote>
 <ul>
 <li>sql中有VALUES</li>
 <li><p>分隔符是空格,这种方式可以返回插入总条数</p>
@@ -1007,8 +1005,7 @@
 </ul>
 <hr>
 <blockquote>
-<p>3.begin end模式</p>
-</blockquote>
+<h2 id="3-begin-end模式"><a href="#3-begin-end模式" class="headerlink" title="3.begin end模式"></a>3.begin end模式</h2></blockquote>
 <ul>
 <li>分隔符是 ;插入成功，返回插入总条数始终未-1<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"list"</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">open</span>=<span class="string">"begin"</span> <span class="attr">close</span>=<span class="string">";end;"</span> <span class="attr">separator</span>=<span class="string">";"</span>&gt;</span></div><div class="line">　INSERT INTO STUDENT</div><div class="line">　　(</div><div class="line">　　　NAME，</div><div class="line">　　　AGE</div><div class="line">　　)</div><div class="line">　VALUES(</div><div class="line">　　　#&#123;item.name&#125;, </div><div class="line">　　　#&#123;item.age&#125;</div><div class="line">　　)</div><div class="line"><span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
