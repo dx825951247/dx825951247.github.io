@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Oracle," />
 
 
 
@@ -95,13 +95,14 @@
 
 
 <meta name="description" content="一.创建序列号1234567create sequence SEQ_VEN_CODEminvalue 1maxvalue 999999999999start with 74increment by 1nocachecycle; 二.创建自增长函数12345678910111213141516171819CREATE OR REPLACE FUNCTION FUN_VEN_CODE(VEN_TYPE">
+<meta name="keywords" content="Oracle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Oracle创建自增长字段函数">
-<meta property="og:url" content="www.duxing.men/2017/09/05/increaseIdOracle/index.html">
+<meta property="og:url" content="www.duxing.men/2017/10/17/increaseIdOracle/index.html">
 <meta property="og:site_name" content="castellan">
 <meta property="og:description" content="一.创建序列号1234567create sequence SEQ_VEN_CODEminvalue 1maxvalue 999999999999start with 74increment by 1nocachecycle; 二.创建自增长函数12345678910111213141516171819CREATE OR REPLACE FUNCTION FUN_VEN_CODE(VEN_TYPE">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-17T08:39:00.360Z">
+<meta property="og:updated_time" content="2017-10-17T09:22:47.749Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Oracle创建自增长字段函数">
 <meta name="twitter:description" content="一.创建序列号1234567create sequence SEQ_VEN_CODEminvalue 1maxvalue 999999999999start with 74increment by 1nocachecycle; 二.创建自增长函数12345678910111213141516171819CREATE OR REPLACE FUNCTION FUN_VEN_CODE(VEN_TYPE">
@@ -133,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="www.duxing.men/2017/09/05/increaseIdOracle/"/>
+  <link rel="canonical" href="www.duxing.men/2017/10/17/increaseIdOracle/"/>
 
 
 
@@ -282,7 +283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="www.duxing.men/2017/09/05/increaseIdOracle/">
+    <link itemprop="mainEntityOfPage" href="www.duxing.men/2017/10/17/increaseIdOracle/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dx">
@@ -311,8 +312,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-05T14:15:27+08:00">
-                2017-09-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-17T17:19:54+08:00">
+                2017-10-17
               </time>
             
 
@@ -375,10 +376,13 @@
 <p>二.创建自增长函数<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">CREATE OR REPLACE FUNCTION FUN_VEN_CODE(VEN_TYPE VARCHAR2) RETURN VARCHAR2 IS</div><div class="line">  VEN_CODE VARCHAR2(30);</div><div class="line">BEGIN</div><div class="line">  IF VEN_TYPE = 'LOGISTICS' THEN</div><div class="line">    SELECT 'L' || LTRIM(TO_CHAR(SYSDATE, 'yyyymmdd')) ||</div><div class="line">           LPAD(SEQ_VEN_CODE.NEXTVAL, 5, '0')</div><div class="line">      INTO VEN_CODE</div><div class="line">      FROM DUAL;</div><div class="line">  ELSIF VEN_TYPE = 'GOODS' THEN</div><div class="line">    SELECT 'G' || LTRIM(TO_CHAR(SYSDATE, 'yyyymmdd')) ||</div><div class="line">           LPAD(SEQ_VEN_CODE.NEXTVAL, 5, '0')</div><div class="line">      INTO VEN_CODE</div><div class="line">      FROM DUAL;</div><div class="line">  END IF;</div><div class="line">  RETURN TRIM(VEN_CODE);</div><div class="line">EXCEPTION</div><div class="line">  WHEN OTHERS THEN</div><div class="line">    RETURN '0';</div><div class="line">END;</div></pre></td></tr></table></figure></p>
 <p>三.查询</p>
 <blockquote>
+<p>select FUN_VEN_CODE(‘LOGISTICS’) from dual</p>
+</blockquote>
+<p>结果：L2017101700072</p>
 <blockquote>
-<p>select FUN_VEN_CODE(‘LOGISTICS’) from dual<br>结果：L2017101700072<br>select FUN_VEN_CODE(‘GOODS’) from dual<br>结果：G2017101700073 </p>
+<p>select FUN_VEN_CODE(‘GOODS’) from dual</p>
 </blockquote>
-</blockquote>
+<p>结果：G2017101700073 </p>
 
       
     </div>
@@ -394,6 +398,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Oracle/" rel="tag"># Oracle</a>
+          
+        </div>
+      
 
       
       
@@ -403,8 +413,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/24/serviceException/" rel="next" title="业务流程异常处理">
-                <i class="fa fa-chevron-left"></i> 业务流程异常处理
+              <a href="/2017/09/05/convertISODateToString/" rel="next" title="ISODate转String">
+                <i class="fa fa-chevron-left"></i> ISODate转String
               </a>
             
           </div>
@@ -412,10 +422,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/05/convertISODateToString/" rel="prev" title="ISODate转String">
-                ISODate转String <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -505,7 +511,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

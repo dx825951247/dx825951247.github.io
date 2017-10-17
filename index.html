@@ -280,6 +280,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="www.duxing.men/2017/10/17/increaseIdOracle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dx">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="castellan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/17/increaseIdOracle/" itemprop="url">Oracle创建自增长字段函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-17T17:19:54+08:00">
+                2017-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Oracle/" itemprop="url" rel="index">
+                    <span itemprop="name">Oracle</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一.创建序列号<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">create sequence SEQ_VEN_CODE</div><div class="line">minvalue 1</div><div class="line">maxvalue 999999999999</div><div class="line">start with 74</div><div class="line">increment by 1</div><div class="line">nocache</div><div class="line">cycle;</div></pre></td></tr></table></figure></p>
+<p>二.创建自增长函数<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">CREATE OR REPLACE FUNCTION FUN_VEN_CODE(VEN_TYPE VARCHAR2) RETURN VARCHAR2 IS</div><div class="line">  VEN_CODE VARCHAR2(30);</div><div class="line">BEGIN</div><div class="line">  IF VEN_TYPE = 'LOGISTICS' THEN</div><div class="line">    SELECT 'L' || LTRIM(TO_CHAR(SYSDATE, 'yyyymmdd')) ||</div><div class="line">           LPAD(SEQ_VEN_CODE.NEXTVAL, 5, '0')</div><div class="line">      INTO VEN_CODE</div><div class="line">      FROM DUAL;</div><div class="line">  ELSIF VEN_TYPE = 'GOODS' THEN</div><div class="line">    SELECT 'G' || LTRIM(TO_CHAR(SYSDATE, 'yyyymmdd')) ||</div><div class="line">           LPAD(SEQ_VEN_CODE.NEXTVAL, 5, '0')</div><div class="line">      INTO VEN_CODE</div><div class="line">      FROM DUAL;</div><div class="line">  END IF;</div><div class="line">  RETURN TRIM(VEN_CODE);</div><div class="line">EXCEPTION</div><div class="line">  WHEN OTHERS THEN</div><div class="line">    RETURN '0';</div><div class="line">END;</div></pre></td></tr></table></figure></p>
+<p>三.查询</p>
+<blockquote>
+<p>select FUN_VEN_CODE(‘LOGISTICS’) from dual</p>
+</blockquote>
+<p>结果：L2017101700072</p>
+<blockquote>
+<p>select FUN_VEN_CODE(‘GOODS’) from dual</p>
+</blockquote>
+<p>结果：G2017101700073 </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="www.duxing.men/2017/09/05/convertISODateToString/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -375,155 +527,6 @@
           
             <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * convertISODateToString</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span> time 2017-09-07T16:00:00.000Z</span></div><div class="line"><span class="comment"> * <span class="doctag">@return</span></span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">convertISODateToString</span><span class="params">(String time)</span></span>&#123;  </div><div class="line">    <span class="keyword">if</span>(!time.matches(<span class="string">"\\d&#123;4&#125;-\\d&#123;2&#125;-\\d&#123;2&#125;T\\d&#123;2&#125;:\\d&#123;2&#125;:\\d&#123;2&#125;.\\d&#123;3&#125;Z"</span>))&#123;  </div><div class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;  </div><div class="line">    &#125;</div><div class="line">    SimpleDateFormat sdf =   <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>); </div><div class="line">    time=time.replaceFirst(<span class="string">"T"</span>, <span class="string">" "</span>).replaceFirst(<span class="string">".\\d&#123;3&#125;Z"</span>, <span class="string">""</span>);</div><div class="line">    Date date;</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		date = sdf.parse(time);</div><div class="line">		Calendar ca=Calendar.getInstance();  </div><div class="line">	    ca.setTime(date);  </div><div class="line">	    ca.add(Calendar.HOUR_OF_DAY, <span class="number">8</span>); </div><div class="line">	    time = sdf.format(date);</div><div class="line">	&#125; <span class="keyword">catch</span> (ParseException e) &#123;</div><div class="line">		e.printStackTrace();</div><div class="line">	&#125;  </div><div class="line">    <span class="keyword">return</span> time;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><a href="http://www.028888.net/archives/2016_08_1480.html" target="_blank" rel="external">参考文章</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="www.duxing.men/2017/09/05/increaseIdOracle/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dx">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="castellan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/05/increaseIdOracle/" itemprop="url">Oracle创建自增长字段函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-05T14:15:27+08:00">
-                2017-09-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Oracle/" itemprop="url" rel="index">
-                    <span itemprop="name">Oracle</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一.创建序列号<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">create sequence SEQ_VEN_CODE</div><div class="line">minvalue 1</div><div class="line">maxvalue 999999999999</div><div class="line">start with 74</div><div class="line">increment by 1</div><div class="line">nocache</div><div class="line">cycle;</div></pre></td></tr></table></figure></p>
-<p>二.创建自增长函数<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">CREATE OR REPLACE FUNCTION FUN_VEN_CODE(VEN_TYPE VARCHAR2) RETURN VARCHAR2 IS</div><div class="line">  VEN_CODE VARCHAR2(30);</div><div class="line">BEGIN</div><div class="line">  IF VEN_TYPE = 'LOGISTICS' THEN</div><div class="line">    SELECT 'L' || LTRIM(TO_CHAR(SYSDATE, 'yyyymmdd')) ||</div><div class="line">           LPAD(SEQ_VEN_CODE.NEXTVAL, 5, '0')</div><div class="line">      INTO VEN_CODE</div><div class="line">      FROM DUAL;</div><div class="line">  ELSIF VEN_TYPE = 'GOODS' THEN</div><div class="line">    SELECT 'G' || LTRIM(TO_CHAR(SYSDATE, 'yyyymmdd')) ||</div><div class="line">           LPAD(SEQ_VEN_CODE.NEXTVAL, 5, '0')</div><div class="line">      INTO VEN_CODE</div><div class="line">      FROM DUAL;</div><div class="line">  END IF;</div><div class="line">  RETURN TRIM(VEN_CODE);</div><div class="line">EXCEPTION</div><div class="line">  WHEN OTHERS THEN</div><div class="line">    RETURN '0';</div><div class="line">END;</div></pre></td></tr></table></figure></p>
-<p>三.查询</p>
-<blockquote>
-<blockquote>
-<p>select FUN_VEN_CODE(‘LOGISTICS’) from dual<br>结果：L2017101700072<br>select FUN_VEN_CODE(‘GOODS’) from dual<br>结果：G2017101700073 </p>
-</blockquote>
-</blockquote>
 
           
         
@@ -907,7 +910,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/08/oracleInsert/" itemprop="url">Oracle数据库批量插入的三种方式</a></h1>
+                <a class="post-title-link" href="/2017/08/08/oracleInsert/" itemprop="url">Oracle数据库批量插入、批量更新</a></h1>
         
 
         <div class="post-meta">
@@ -981,7 +984,7 @@
       
         
           
-            <blockquote>
+            <h1 id="一-批量插入三种方式"><a href="#一-批量插入三种方式" class="headerlink" title="一.批量插入三种方式"></a>一.批量插入三种方式</h1><blockquote>
 <p>1.使用union all</p>
 </blockquote>
 <ul>
@@ -1007,9 +1010,11 @@
 <p>3.begin end模式</p>
 </blockquote>
 <ul>
-<li>分隔符是 ;插入成功，返回插入总条数始终未-1<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"list"</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">open</span>=<span class="string">"begin"</span> <span class="attr">close</span>=<span class="string">";end;"</span> <span class="attr">separator</span>=<span class="string">";"</span>&gt;</span></div><div class="line">　INSERT INTO STUDENT</div><div class="line">　　(</div><div class="line">　　　NAME，</div><div class="line">　　　AGE</div><div class="line">　　)</div><div class="line">　VALUES(</div><div class="line">　　　#&#123;item.name&#125;, </div><div class="line">　　　#&#123;item.age&#125;</div><div class="line">　　)</div><div class="line"><span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></div></pre></td></tr></table></figure></li>
+<li>分隔符是 ;插入成功，返回插入总条数始终未-1<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"list"</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">open</span>=<span class="string">"begin"</span> <span class="attr">close</span>=<span class="string">";end;"</span> <span class="attr">separator</span>=<span class="string">";"</span>&gt;</span></div><div class="line">　INSERT INTO STUDENT</div><div class="line">　　(</div><div class="line">　　　NAME，</div><div class="line">　　　AGE</div><div class="line">　　)</div><div class="line">　VALUES(</div><div class="line">　　　#&#123;item.name&#125;, </div><div class="line">　　　#&#123;item.age&#125;</div><div class="line">　　)</div><div class="line"><span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
 </ul>
-
+<hr>
+<h1 id="二-批量删除"><a href="#二-批量删除" class="headerlink" title="二.批量删除"></a>二.批量删除</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">"updateStudent"</span> <span class="attr">parameterType</span>=<span class="string">"java.util.Map"</span>&gt;</span></div><div class="line">　<span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"list"</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">open</span>=<span class="string">"begin"</span> <span class="attr">close</span>=<span class="string">";end;"</span> <span class="attr">separator</span>=<span class="string">";"</span>&gt;</span></div><div class="line">　　UPDATE </div><div class="line">　　　STUDENT</div><div class="line">　　SET </div><div class="line">　　　AGE = '0'</div><div class="line">　　WHERE</div><div class="line">　　　NAME = #&#123;item.name&#125; </div><div class="line">　<span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">update</span>&gt;</span></div></pre></td></tr></table></figure>
           
         
       
@@ -1112,7 +1117,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
