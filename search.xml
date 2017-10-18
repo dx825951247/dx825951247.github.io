@@ -1,241 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-    
-    <entry>
-      <title><![CDATA[Next博客链接与常用Markdown语法]]></title>
-      <url>/2017/10/18/nextPage/</url>
-      <content type="html"><![CDATA[<p><a href="http://blog.ynxiu.com/2016/hexo-next-theme-optimize.html" target="_blank" rel="external">量子广告</a><br><a href="http://www.wuxubj.cn/" target="_blank" rel="external">务虚笔记</a><br><a href="https://ehlxr.me/" target="_blank" rel="external">小桥流水人家</a><br><a href="http://www.iamlj.com/" target="_blank" rel="external">Jing’s Blog</a><br><a href="https://notes.wanghao.work/" target="_blank" rel="external">Doublemine</a><br><a href="http://lovenight.github.io/" target="_blank" rel="external">岁月如歌</a><br><a href="http://hunao.info/" target="_blank" rel="external">胡闹的日子</a><br><a href="https://neveryu.github.io/" target="_blank" rel="external">Never_yu’s Blog </a><br><a id="more"></a></p>
-<p>Bootstrap Callout<br><div class="note default"><p>Content (md partial supported) </p></div>
-<div class="note primary"><p>Content (md partial supported) </p></div><br><div class="note success"><p>Content (md partial supported) </p></div>
-<div class="note info"><p>Content (md partial supported) </p></div><br><div class="note warning"><p>Content (md partial supported) </p></div>
-<div class="note danger"><p>Content (md partial supported) </p></div></p>
-<p>Next标签插件<br>Code Block<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(&apos;Hello World!&apos;);</div></pre></td></tr></table></figure></p>
-<p>Pull Quote<br><blockquote class="pullquote [class]"><p>content</p>
-</blockquote></p>
-<p>代码块<br><code>hexo-generator-index</code><br><code>hexo-generator-index</code></p>
-<p>加粗<br><em>single asterisks</em></p>
-<p><em>single underscores</em></p>
-<p><strong>double asterisks</strong></p>
-<p><strong>double underscores</strong></p>
-]]></content>
-      
-        <categories>
-            
-            <category> Next </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Next </tag>
-            
-            <tag> Markdown </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Mybatis返回结果集Map or 实体类]]></title>
-      <url>/2017/10/18/mybatisReturn/</url>
-      <content type="html"><![CDATA[<h4 id="观点1："><a href="#观点1：" class="headerlink" title="观点1："></a>观点1：</h4><div class="note primary"><p>一般的配置项表的结构不太会变化，服务层还有业务操作，使用实体类好些，如果返回结果是多层组合，返回结构字段可能经常变化，多表联合查询，使用Map好些。</p></div>
-<a id="more"></a>
-<h4 id="观点2："><a href="#观点2：" class="headerlink" title="观点2："></a>观点2：</h4><div class="note danger"><p>如果是多表联合查询，然后你又觉得返回方式用Map不合适，你可以自己建立个实体类，这个实力类中包含有你所要查询的多表中的字段，然后在mybatis中用typeAlias指定一下，到时候就能像用一般的实体类那样使用就好。</p></div>
-<h4 id="观点3："><a href="#观点3：" class="headerlink" title="观点3："></a>观点3：</h4><div class="note success"><p>使用Map可读性较差，当你前端用Map接收传递参数和mybatis返回用Map接收和传递参数，如果回头阅读代码，还得去看前端请求或者具体sql返回结果。如果是他人接手你的项目，得从头到尾得读一遍你的代码。如果你返回的是一个对象实体，那他就可以看到你返回的是什么，别人也就不需要再去看你代码了，提高了开发效率。</p></div>
-<h4 id="观点4："><a href="#观点4：" class="headerlink" title="观点4："></a>观点4：</h4><div class="note info"><p>MyBatis也是ORM(Object Relational Mapping)框架的一员，使用Map从业界准则来看，不符合面向对象思想，这是一个代码规范问题。</p></div>
-<h4 id="观点5："><a href="#观点5：" class="headerlink" title="观点5："></a>观点5：</h4><div class="note warning"><p>采用实体类比Map更耗费系统资源，如下图所示：</p></div>
-<p><img src="/images/select.png">  </p>
-]]></content>
-      
-        <categories>
-            
-            <category> Mybatis </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Mybatis </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Oracle创建自增长字段函数]]></title>
-      <url>/2017/10/17/increaseIdOracle/</url>
-      <content type="html"><![CDATA[<p>一.创建序列号<br><a id="more"></a><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">create sequence SEQ_VEN_CODE</div><div class="line">minvalue 1</div><div class="line">maxvalue 999999999999</div><div class="line">start with 74</div><div class="line">increment by 1</div><div class="line">nocache</div><div class="line">cycle;</div></pre></td></tr></table></figure></p>
-<p>二.创建自增长函数<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">CREATE OR REPLACE FUNCTION FUN_VEN_CODE(VEN_TYPE VARCHAR2) RETURN VARCHAR2 IS</div><div class="line">  VEN_CODE VARCHAR2(30);</div><div class="line">BEGIN</div><div class="line">  IF VEN_TYPE = 'LOGISTICS' THEN</div><div class="line">    SELECT 'L' || LTRIM(TO_CHAR(SYSDATE, 'yyyymmdd')) ||</div><div class="line">           LPAD(SEQ_VEN_CODE.NEXTVAL, 5, '0')</div><div class="line">      INTO VEN_CODE</div><div class="line">      FROM DUAL;</div><div class="line">  ELSIF VEN_TYPE = 'GOODS' THEN</div><div class="line">    SELECT 'G' || LTRIM(TO_CHAR(SYSDATE, 'yyyymmdd')) ||</div><div class="line">           LPAD(SEQ_VEN_CODE.NEXTVAL, 5, '0')</div><div class="line">      INTO VEN_CODE</div><div class="line">      FROM DUAL;</div><div class="line">  END IF;</div><div class="line">  RETURN TRIM(VEN_CODE);</div><div class="line">EXCEPTION</div><div class="line">  WHEN OTHERS THEN</div><div class="line">    RETURN '0';</div><div class="line">END;</div></pre></td></tr></table></figure></p>
-<p>三.查询</p>
-<p><code>select FUN_VEN_CODE(&#39;LOGISTICS&#39;) from dual</code></p>
-<p>结果：L2017101700072</p>
-<p><code>select FUN_VEN_CODE(&#39;GOODS&#39;) from dual</code></p>
-<p>结果：G2017101700073 </p>
-]]></content>
-      
-        <categories>
-            
-            <category> Oracle </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Oracle </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[ISODate转String]]></title>
-      <url>/2017/09/05/convertISODateToString/</url>
-      <content type="html"><![CDATA[<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * convertISODateToString</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span> time 2017-09-07T16:00:00.000Z</span></div><div class="line"><span class="comment"> * <span class="doctag">@return</span></span></div><div class="line"><span class="comment"> */</span></div><div class="line"> &lt;!--more--&gt;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">convertISODateToString</span><span class="params">(String time)</span></span>&#123;  </div><div class="line">    <span class="keyword">if</span>(!time.matches(<span class="string">"\\d&#123;4&#125;-\\d&#123;2&#125;-\\d&#123;2&#125;T\\d&#123;2&#125;:\\d&#123;2&#125;:\\d&#123;2&#125;.\\d&#123;3&#125;Z"</span>))&#123;  </div><div class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;  </div><div class="line">    &#125;</div><div class="line">    SimpleDateFormat sdf =   <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>); </div><div class="line">    time=time.replaceFirst(<span class="string">"T"</span>, <span class="string">" "</span>).replaceFirst(<span class="string">".\\d&#123;3&#125;Z"</span>, <span class="string">""</span>);</div><div class="line">    Date date;</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		date = sdf.parse(time);</div><div class="line">		Calendar ca=Calendar.getInstance();  </div><div class="line">	    ca.setTime(date);  </div><div class="line">	    ca.add(Calendar.HOUR_OF_DAY, <span class="number">8</span>); </div><div class="line">	    time = sdf.format(date);</div><div class="line">	&#125; <span class="keyword">catch</span> (ParseException e) &#123;</div><div class="line">		e.printStackTrace();</div><div class="line">	&#125;  </div><div class="line">    <span class="keyword">return</span> time;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><a href="http://www.028888.net/archives/2016_08_1480.html" target="_blank" rel="external">参考文章</a></p>
-]]></content>
-      
-        <categories>
-            
-            <category> Java </category>
-            
-        </categories>
-        
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[业务流程异常处理]]></title>
-      <url>/2017/08/24/serviceException/</url>
-      <content type="html"><![CDATA[<h2 id="一、异常分类"><a href="#一、异常分类" class="headerlink" title="一、异常分类"></a>一、异常分类</h2><p>在web系统开发中，异常可大致分为:</p>
-<ul>
-<li><font color="#FF0000">系统异常:</font>软件的缺陷，客户端对此类异常是无能为力的,系统内部未知异常。</li>
-<li><font color="#FF0000">业务异常</font>用户未按正常流程操作导致的异常。<a id="more"></a>
-</li>
-</ul>
-<h2 id="二、处理方式"><a href="#二、处理方式" class="headerlink" title="二、处理方式"></a>二、处理方式</h2><p>在实际开发中，常见的异常处理方式有:<br>1.系统异常采用<code>try{}catch{}</code>处理,在<code>service</code>抛出异常，由<code>controller</code>层得到异常信息在返回,最好定义一个异常信息枚举类，集中记录异常信息：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">`service`层：</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">		<span class="comment">//service代码</span></div><div class="line"></div><div class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">		e.printStackTrace();</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> ServiceException(ErrorCode.SYSTEM_ERROR);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">枚举类`ErrorCode`：</div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * <span class="doctag">@author</span> </span></div><div class="line"><span class="comment"> * errorCode 错误代码  </span></div><div class="line"><span class="comment"> * sysMsg 系统显示信息（一般用于日志输出）</span></div><div class="line"><span class="comment"> * showMsg 页面显示信息（一般用于页面提示用户）</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> ErrorCode &#123;</div><div class="line">	</div><div class="line">	SYSTEM_ERROR(<span class="number">10086</span>,<span class="string">""</span>,<span class="string">"系统异常！"</span>),</div><div class="line">	CODE_EXIST(<span class="number">101111101</span>,<span class="string">""</span>,<span class="string">"code码已存在已存在！"</span>);</div><div class="line"></div><div class="line">	<span class="keyword">int</span> errorCode;</div><div class="line">	String sysMsg;</div><div class="line">	String showMsg;</div><div class="line">	ErrorCode(<span class="keyword">int</span> errorCode, String sysMsg, String showMsg)&#123;</div><div class="line">		<span class="keyword">this</span>.errorCode = errorCode;</div><div class="line">		<span class="keyword">this</span>.sysMsg = sysMsg;</div><div class="line">		<span class="keyword">this</span>.showMsg = showMsg;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getErrorCode</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> errorCode;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getSysMsg</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> sysMsg;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getShowMsg</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> showMsg;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setShowMsg</span><span class="params">(String showMsg)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.showMsg = showMsg;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSysMsg</span><span class="params">(String sysMsg)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.sysMsg = sysMsg;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">`controller`层：</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">		</div><div class="line">		<span class="comment">//controller代码</span></div><div class="line">		</div><div class="line">	&#125; <span class="keyword">catch</span> (ModuleException e) &#123;</div><div class="line">		<span class="comment">//通过枚举类返回错误码和错误信息</span></div><div class="line">		<span class="keyword">return</span> ResponseError.create(e.getErrorCode().getErrorCode(),e.getErrorCode().getShowMsg());</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
-<p>2.业务异常可以采用<code>try{}catch{}</code>处理，或者采用<code>if</code>加错误码判断处理<br>如果采用<code>try{}catch{}</code>方式，和上面方式一致，下面介绍采用<code>if</code>加错误码处理,定义一个对象，每次处理加上返回码和错误信息提示。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ReturnResultObj obj = <span class="keyword">new</span> ReturnResultObj();</div><div class="line">obj.setCode(<span class="string">"101112101"</span>);</div><div class="line">obj.setMessage(<span class="string">"name不能为空!"</span>);</div><div class="line">obj.setData(<span class="string">""</span>);</div><div class="line"><span class="keyword">return</span> obj;</div></pre></td></tr></table></figure></p>
-<h2 id="三、两种方式优缺点："><a href="#三、两种方式优缺点：" class="headerlink" title="三、两种方式优缺点："></a>三、两种方式优缺点：</h2><ul>
-<li>用<code>if</code>加错误码控制业务流程,需要对每个接口的返回都要做一个错误码的校验,判断的代码会遍布在你的业务代码里面。优点就是对调用方,不必对你的接口进行异常校验,因为你的接口只可能返回「正确」或者「错误」,代码可读性高，但是随之带来的代码显得很臃肿，错误码集中在代码里，后期维护困难，但在效率上面也会更加高一点。对某些人来说,用错误码来控制业务流程更能符合「异常」的语义。</li>
-<li>用异常来控制业务流程,可以把错误处理集中在一处,对客户端的代码编写更加友好,代码清晰简洁，在业务代码里面不会有很多错误码的判断。缺点就是创建异常堆栈是需要时间和空间的,异常处理性能开销在于<br>-是一个synchronized方法(主因)<br>-需要填充线程运行堆栈信息<br>但是可以通过复写业务异常基类的方法<code>Throwable.fillInStackTrace()</code>来提示性能。<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Throwable <span class="title">fillInStackTrace</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>参考文章:<br><a href="https://segmentfault.com/q/1010000004308144?_ea=564305" target="_blank" rel="external">https://segmentfault.com/q/1010000004308144?_ea=564305</a><br><a href="http://blog.csdn.net/liujun13579/article/details/7742380" target="_blank" rel="external">http://blog.csdn.net/liujun13579/article/details/7742380</a></p>
-]]></content>
-      
-        <categories>
-            
-            <category> 业务 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 业务，异常处理 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Mybatis嵌套查询传入多个参数]]></title>
-      <url>/2017/08/17/MybatisNestedSelect/</url>
-      <content type="html"><![CDATA[<h1 id="resultMap"><a href="#resultMap" class="headerlink" title="resultMap"></a>resultMap</h1><ul>
-<li><code>constructor</code> - 类在实例化时,用来注入结果到构造方法中<ul>
-<li><code>dArg</code> - ID 参数;标记结果作为 ID 可以帮助提高整体效能</li>
-<li><code>arg</code> - 注入到构造方法的一个普通结果<a id="more"></a></li>
-</ul>
-</li>
-<li><code>id</code> – 一个 ID 结果;标记结果作为 ID 可以帮助提高整体效能</li>
-<li><code>result</code> – 注入到字段或 JavaBean 属性的普通结果</li>
-<li><code>association</code> – 一个复杂的类型关联;许多结果将包成这种类型<br>  嵌入结果映射 – 结果映射自身的关联,或者参考一个</li>
-<li><p><code>collection</code> – 复杂类型的集<br>  嵌套嵌入结果映射, 结果映射自身的集,或者参考一个</p>
-<blockquote>
-<p><code>collection</code>标签中的<code>select</code>属性，通过这个属性，通过ID引用另一个加载复杂类型的映射语句。<br>从指定列属性中返回的值，将作为参数设置给目标<code>select</code> 语句。<br>注意：在处理组合键时，也就是传入多个参数时，可以使用<code>column=”{pro1=col1,pro2=col2}”</code>这样的语法，这就会把<code>prop1</code>和<code>prop2</code>设置到目标嵌套语句的参数对象中，在子查询中就可以作为参数使用<code>#{pro1}</code>,<code>#{pro2}</code>。</p>
-</blockquote>
-</li>
-<li><p><code>discriminator</code> – 使用结果值来决定使用哪个结果映射</p>
-<ul>
-<li><code>case</code> – 基于某些值的结果映射<br>嵌入结果映射 – 这种情形结果也映射它本身,因此可以包含很多相 同的元素,或者它可以参照一个外部的结果映射。</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"getTest"</span> <span class="attr">parameterType</span>=<span class="string">"Test"</span> <span class="attr">resultMap</span>=<span class="string">"getTestMap"</span>&gt;</span></div><div class="line">　select </div><div class="line">　　AAA, </div><div class="line">　　BBB, </div><div class="line">　　CCC</div><div class="line">　from test </div><div class="line">　where </div><div class="line">　　'1' = '1'</div><div class="line">　and </div><div class="line">　　AAA = #&#123;aaa,jdbcType=VARCHAR&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"getTestMap"</span> <span class="attr">type</span>=<span class="string">"Test"</span>&gt;</span></div><div class="line">　<span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">"AAA"</span> <span class="attr">property</span>=<span class="string">"aaa"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></div><div class="line">　<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"BBB"</span> <span class="attr">property</span>=<span class="string">"bbb"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></div><div class="line">　<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"CCC"</span> <span class="attr">property</span>=<span class="string">"ccc"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></div><div class="line">　<span class="tag">&lt;<span class="name">collection</span> <span class="attr">property</span>=<span class="string">"valueList"</span> <span class="attr">column</span>=<span class="string">"&#123;aaa=AAA,bbb=BBB&#125;"</span> <span class="attr">ofType</span>=<span class="string">"TestValue"</span> <span class="attr">javaType</span>=<span class="string">"ArrayList"</span> <span class="attr">select</span>=<span class="string">"selectTestValues"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectTestValues"</span> <span class="attr">resultMap</span>=<span class="string">"selectTestValuesMap"</span>&gt;</span></div><div class="line">　select </div><div class="line">　　DDD, </div><div class="line">　　EEE</div><div class="line">　from test_value</div><div class="line">　where </div><div class="line">　　AAA = #&#123;aaa,jdbcType=VARCHAR&#125;</div><div class="line">　and </div><div class="line">　　BBB = #&#123;bbb,jdbcType=VARCHAR&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"selectTestValuesMap"</span> <span class="attr">type</span>=<span class="string">"TestValue"</span> &gt;</span></div><div class="line">　<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"DDD"</span> <span class="attr">property</span>=<span class="string">"ddd"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></div><div class="line">　<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"EEE"</span> <span class="attr">property</span>=<span class="string">"eee"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></div></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> Mybatis </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Oracle </tag>
-            
-            <tag> Mybatis </tag>
-            
-            <tag> 管理查询 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Oracle数据库批量插入、批量更新]]></title>
-      <url>/2017/08/08/oracleInsert/</url>
-      <content type="html"><![CDATA[<h1 id="一-批量插入三种方式"><a href="#一-批量插入三种方式" class="headerlink" title="一.批量插入三种方式"></a>一.批量插入三种方式</h1><blockquote>
-<h2 id="1-使用union-all"><a href="#1-使用union-all" class="headerlink" title="1.使用union all"></a>1.使用union all</h2></blockquote>
-<ul>
-<li>sql中没有VALUES</li>
-<li><foreach>中的select…插入数据…from dual<a id="more"></a>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">2017/10/18</div><div class="line">INSERT INTO STUDENT</div><div class="line">　(</div><div class="line">　　NAME，</div><div class="line">　　AGE</div><div class="line">　)</div><div class="line"><span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"templateDetial"</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">separator</span>=<span class="string">"union all"</span> &gt;</span></div><div class="line">　SELECT </div><div class="line">　　#&#123;item.name&#125;, </div><div class="line">　　#&#123;item.age&#125;</div><div class="line">　FROM DUAL	</div><div class="line"><span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></div></pre></td></tr></table></figure>
-</foreach></li>
-</ul>
-<hr>
-<blockquote>
-<h2 id="2-insert-all"><a href="#2-insert-all" class="headerlink" title="2.insert all"></a>2.insert all</h2></blockquote>
-<ul>
-<li>sql中有<code>VALUES</code></li>
-<li><p>分隔符是空格,这种方式可以返回插入总条数</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">INSERT ALL</div><div class="line">　<span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"list"</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">separator</span>=<span class="string">" "</span>&gt;</span></div><div class="line">　　INTO STUDENT</div><div class="line">　　　(</div><div class="line">　　　　NAME，</div><div class="line">　　　　AGE</div><div class="line">　　　)</div><div class="line">　　　　VALUES(</div><div class="line">	#&#123;item.name&#125;, </div><div class="line">　　　　#&#123;item.age&#125;</div><div class="line">　　　)</div><div class="line">　<span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></div><div class="line">SELECT 1 FROM DUAL</div></pre></td></tr></table></figure>
-</li>
-<li><p>批量插入多表</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">INSERT ALL</div><div class="line">　<span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"carouselList"</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">separator</span>=<span class="string">" "</span>&gt;</span></div><div class="line">　　INTO STUDENT</div><div class="line">　　　(</div><div class="line">　　　　NAME，</div><div class="line">　　　　AGE</div><div class="line">　　　)</div><div class="line">　　　　VALUES(</div><div class="line">	#&#123;item.name&#125;, </div><div class="line">　　　　#&#123;item.age&#125;</div><div class="line">　　　)</div><div class="line">    INTO STUDENT2</div><div class="line">　　　(</div><div class="line">　　　　NAME2，</div><div class="line">　　　　AGE2</div><div class="line">　　　)</div><div class="line">　　　　VALUES(</div><div class="line">	#&#123;item.name&#125;, </div><div class="line">　　　　#&#123;item.age&#125;</div><div class="line">　　　)</div><div class="line">　<span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></div><div class="line">SELECT 1 FROM DUAL</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<blockquote>
-<h2 id="3-begin-end模式"><a href="#3-begin-end模式" class="headerlink" title="3.begin end模式"></a>3.begin end模式</h2></blockquote>
-<ul>
-<li>分隔符是 ;插入成功，返回插入总条数始终未-1<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"list"</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">open</span>=<span class="string">"begin"</span> <span class="attr">close</span>=<span class="string">";end;"</span> <span class="attr">separator</span>=<span class="string">";"</span>&gt;</span></div><div class="line">　INSERT INTO STUDENT</div><div class="line">　　(</div><div class="line">　　　NAME，</div><div class="line">　　　AGE</div><div class="line">　　)</div><div class="line">　VALUES(</div><div class="line">　　　#&#123;item.name&#125;, </div><div class="line">　　　#&#123;item.age&#125;</div><div class="line">　　)</div><div class="line"><span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h1 id="二-批量更新"><a href="#二-批量更新" class="headerlink" title="二.批量更新"></a>二.批量更新</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">"updateStudent"</span> <span class="attr">parameterType</span>=<span class="string">"java.util.Map"</span>&gt;</span></div><div class="line">　<span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"list"</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">open</span>=<span class="string">"begin"</span> <span class="attr">close</span>=<span class="string">";end;"</span> <span class="attr">separator</span>=<span class="string">";"</span>&gt;</span></div><div class="line">　　UPDATE </div><div class="line">　　　STUDENT</div><div class="line">　　SET </div><div class="line">　　　AGE = '0'</div><div class="line">　　WHERE</div><div class="line">　　　NAME = #&#123;item.name&#125; </div><div class="line">　<span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">update</span>&gt;</span></div></pre></td></tr></table></figure>]]></content>
-      
-        <categories>
-            
-            <category> Oracle </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Oracle </tag>
-            
-            <tag> Mybatis </tag>
-            
-        </tags>
-        
-    </entry>
-    
-  
-  
+<search>
+  <entry>
+    <title><![CDATA[Next博客链接与常用Markdown语法]]></title>
+    <url>%2F2017%2F10%2F18%2FnextPage%2F</url>
+    <content type="text"><![CDATA[量子广告务虚笔记小桥流水人家Jing’s BlogDoublemine岁月如歌胡闹的日子Never_yu’s Blog Bootstrap CalloutContent (md partial supported) Content (md partial supported) Content (md partial supported) Content (md partial supported) Content (md partial supported) Content (md partial supported) Next标签插件Code Block1alert(&apos;Hello World!&apos;); Pull Quotecontent 代码块hexo-generator-indexhexo-generator-index 加粗single asterisks single underscores double asterisks double underscores]]></content>
+      <categories>
+        <category>Next</category>
+      </categories>
+      <tags>
+        <tag>Next</tag>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Mybatis返回结果集Map or 实体类]]></title>
+    <url>%2F2017%2F10%2F18%2FmybatisReturn%2F</url>
+    <content type="text"><![CDATA[观点1：一般的配置项表的结构不太会变化，服务层还有业务操作，使用实体类好些，如果返回结果是多层组合，返回结构字段可能经常变化，多表联合查询，使用Map好些。 观点2：如果是多表联合查询，然后你又觉得返回方式用Map不合适，你可以自己建立个实体类，这个实力类中包含有你所要查询的多表中的字段，然后在mybatis中用typeAlias指定一下，到时候就能像用一般的实体类那样使用就好。 观点3：使用Map可读性较差，当你前端用Map接收传递参数和mybatis返回用Map接收和传递参数，如果回头阅读代码，还得去看前端请求或者具体sql返回结果。如果是他人接手你的项目，得从头到尾得读一遍你的代码。如果你返回的是一个对象实体，那他就可以看到你返回的是什么，别人也就不需要再去看你代码了，提高了开发效率。 观点4：MyBatis也是ORM(Object Relational Mapping)框架的一员，使用Map从业界准则来看，不符合面向对象思想，这是一个代码规范问题。 观点5：采用实体类比Map更耗费系统资源，如下图所示：]]></content>
+      <categories>
+        <category>Mybatis</category>
+      </categories>
+      <tags>
+        <tag>Mybatis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Oracle创建自增长字段函数]]></title>
+    <url>%2F2017%2F10%2F17%2FincreaseIdOracle%2F</url>
+    <content type="text"><![CDATA[一.创建序列号1234567create sequence SEQ_VEN_CODEminvalue 1maxvalue 999999999999start with 74increment by 1nocachecycle; 二.创建自增长函数12345678910111213141516171819CREATE OR REPLACE FUNCTION FUN_VEN_CODE(VEN_TYPE VARCHAR2) RETURN VARCHAR2 IS VEN_CODE VARCHAR2(30);BEGIN IF VEN_TYPE = 'LOGISTICS' THEN SELECT 'L' || LTRIM(TO_CHAR(SYSDATE, 'yyyymmdd')) || LPAD(SEQ_VEN_CODE.NEXTVAL, 5, '0') INTO VEN_CODE FROM DUAL; ELSIF VEN_TYPE = 'GOODS' THEN SELECT 'G' || LTRIM(TO_CHAR(SYSDATE, 'yyyymmdd')) || LPAD(SEQ_VEN_CODE.NEXTVAL, 5, '0') INTO VEN_CODE FROM DUAL; END IF; RETURN TRIM(VEN_CODE);EXCEPTION WHEN OTHERS THEN RETURN '0';END; 三.查询 select FUN_VEN_CODE(&#39;LOGISTICS&#39;) from dual 结果：L2017101700072 select FUN_VEN_CODE(&#39;GOODS&#39;) from dual 结果：G2017101700073]]></content>
+      <categories>
+        <category>Oracle</category>
+      </categories>
+      <tags>
+        <tag>Oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ISODate转String]]></title>
+    <url>%2F2017%2F09%2F05%2FconvertISODateToString%2F</url>
+    <content type="text"><![CDATA[123456789101112131415161718192021222324/** * convertISODateToString * @param time 2017-09-07T16:00:00.000Z * @return */ &lt;!--more--&gt;public static String convertISODateToString(String time)&#123; if(!time.matches("\\d&#123;4&#125;-\\d&#123;2&#125;-\\d&#123;2&#125;T\\d&#123;2&#125;:\\d&#123;2&#125;:\\d&#123;2&#125;.\\d&#123;3&#125;Z"))&#123; return null; &#125; SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); time=time.replaceFirst("T", " ").replaceFirst(".\\d&#123;3&#125;Z", ""); Date date; try &#123; date = sdf.parse(time); Calendar ca=Calendar.getInstance(); ca.setTime(date); ca.add(Calendar.HOUR_OF_DAY, 8); time = sdf.format(date); &#125; catch (ParseException e) &#123; e.printStackTrace(); &#125; return time; &#125; 参考文章]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[业务流程异常处理]]></title>
+    <url>%2F2017%2F08%2F24%2FserviceException%2F</url>
+    <content type="text"><![CDATA[一、异常分类在web系统开发中，异常可大致分为: 系统异常:软件的缺陷，客户端对此类异常是无能为力的,系统内部未知异常。 业务异常用户未按正常流程操作导致的异常。 二、处理方式在实际开发中，常见的异常处理方式有:1.系统异常采用try{}catch{}处理,在service抛出异常，由controller层得到异常信息在返回,最好定义一个异常信息枚举类，集中记录异常信息：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556`service`层：try &#123; //service代码 &#125; catch (Exception e) &#123; e.printStackTrace(); throw new ServiceException(ErrorCode.SYSTEM_ERROR); &#125;枚举类`ErrorCode`：/** * @author * errorCode 错误代码 * sysMsg 系统显示信息（一般用于日志输出） * showMsg 页面显示信息（一般用于页面提示用户） * */public enum ErrorCode &#123; SYSTEM_ERROR(10086,"","系统异常！"), CODE_EXIST(101111101,"","code码已存在已存在！"); int errorCode; String sysMsg; String showMsg; ErrorCode(int errorCode, String sysMsg, String showMsg)&#123; this.errorCode = errorCode; this.sysMsg = sysMsg; this.showMsg = showMsg; &#125; public int getErrorCode()&#123; return errorCode; &#125; public String getSysMsg()&#123; return sysMsg; &#125; public String getShowMsg()&#123; return showMsg; &#125; public void setShowMsg(String showMsg)&#123; this.showMsg = showMsg; &#125; public void setSysMsg(String sysMsg)&#123; this.sysMsg = sysMsg; &#125;&#125;`controller`层：try &#123; //controller代码 &#125; catch (ModuleException e) &#123; //通过枚举类返回错误码和错误信息 return ResponseError.create(e.getErrorCode().getErrorCode(),e.getErrorCode().getShowMsg()); &#125; 2.业务异常可以采用try{}catch{}处理，或者采用if加错误码判断处理如果采用try{}catch{}方式，和上面方式一致，下面介绍采用if加错误码处理,定义一个对象，每次处理加上返回码和错误信息提示。12345ReturnResultObj obj = new ReturnResultObj();obj.setCode("101112101");obj.setMessage("name不能为空!");obj.setData("");return obj; 三、两种方式优缺点： 用if加错误码控制业务流程,需要对每个接口的返回都要做一个错误码的校验,判断的代码会遍布在你的业务代码里面。优点就是对调用方,不必对你的接口进行异常校验,因为你的接口只可能返回「正确」或者「错误」,代码可读性高，但是随之带来的代码显得很臃肿，错误码集中在代码里，后期维护困难，但在效率上面也会更加高一点。对某些人来说,用错误码来控制业务流程更能符合「异常」的语义。 用异常来控制业务流程,可以把错误处理集中在一处,对客户端的代码编写更加友好,代码清晰简洁，在业务代码里面不会有很多错误码的判断。缺点就是创建异常堆栈是需要时间和空间的,异常处理性能开销在于-是一个synchronized方法(主因)-需要填充线程运行堆栈信息但是可以通过复写业务异常基类的方法Throwable.fillInStackTrace()来提示性能。123public Throwable fillInStackTrace() &#123; return null;&#125; 参考文章:https://segmentfault.com/q/1010000004308144?_ea=564305http://blog.csdn.net/liujun13579/article/details/7742380]]></content>
+      <categories>
+        <category>业务</category>
+      </categories>
+      <tags>
+        <tag>业务，异常处理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Mybatis嵌套查询传入多个参数]]></title>
+    <url>%2F2017%2F08%2F17%2FMybatisNestedSelect%2F</url>
+    <content type="text"><![CDATA[resultMap constructor - 类在实例化时,用来注入结果到构造方法中 dArg - ID 参数;标记结果作为 ID 可以帮助提高整体效能 arg - 注入到构造方法的一个普通结果 id – 一个 ID 结果;标记结果作为 ID 可以帮助提高整体效能 result – 注入到字段或 JavaBean 属性的普通结果 association – 一个复杂的类型关联;许多结果将包成这种类型 嵌入结果映射 – 结果映射自身的关联,或者参考一个 collection – 复杂类型的集 嵌套嵌入结果映射, 结果映射自身的集,或者参考一个 collection标签中的select属性，通过这个属性，通过ID引用另一个加载复杂类型的映射语句。从指定列属性中返回的值，将作为参数设置给目标select 语句。注意：在处理组合键时，也就是传入多个参数时，可以使用column=”{pro1=col1,pro2=col2}”这样的语法，这就会把prop1和prop2设置到目标嵌套语句的参数对象中，在子查询中就可以作为参数使用#{pro1},#{pro2}。 discriminator – 使用结果值来决定使用哪个结果映射 case – 基于某些值的结果映射嵌入结果映射 – 这种情形结果也映射它本身,因此可以包含很多相 同的元素,或者它可以参照一个外部的结果映射。 12345678910111213141516171819202122232425262728293031323334&lt;select id="getTest" parameterType="Test" resultMap="getTestMap"&gt; select AAA, BBB, CCC from test where '1' = '1' and AAA = #&#123;aaa,jdbcType=VARCHAR&#125;&lt;/select&gt;&lt;resultMap id="getTestMap" type="Test"&gt; &lt;id column="AAA" property="aaa" jdbcType="VARCHAR" /&gt; &lt;result column="BBB" property="bbb" jdbcType="VARCHAR" /&gt; &lt;result column="CCC" property="ccc" jdbcType="VARCHAR" /&gt; &lt;collection property="valueList" column="&#123;aaa=AAA,bbb=BBB&#125;" ofType="TestValue" javaType="ArrayList" select="selectTestValues"/&gt;&lt;/resultMap&gt;&lt;select id="selectTestValues" resultMap="selectTestValuesMap"&gt; select DDD, EEE from test_value where AAA = #&#123;aaa,jdbcType=VARCHAR&#125; and BBB = #&#123;bbb,jdbcType=VARCHAR&#125;&lt;/select&gt;&lt;resultMap id="selectTestValuesMap" type="TestValue" &gt; &lt;result column="DDD" property="ddd" jdbcType="VARCHAR" /&gt; &lt;result column="EEE" property="eee" jdbcType="VARCHAR" /&gt;&lt;/resultMap&gt;]]></content>
+      <categories>
+        <category>Mybatis</category>
+      </categories>
+      <tags>
+        <tag>Oracle</tag>
+        <tag>Mybatis</tag>
+        <tag>管理查询</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Oracle数据库批量插入、批量更新]]></title>
+    <url>%2F2017%2F08%2F08%2ForacleInsert%2F</url>
+    <content type="text"><![CDATA[一.批量插入三种方式 1.使用union all sql中没有VALUES 中的select…插入数据…from dual 1234567891011122017/10/18INSERT INTO STUDENT ( NAME， AGE )&lt;foreach collection="templateDetial" item="item" index="index" separator="union all" &gt; SELECT #&#123;item.name&#125;, #&#123;item.age&#125; FROM DUAL &lt;/foreach&gt; 2.insert all sql中有VALUES 分隔符是空格,这种方式可以返回插入总条数 12345678910111213INSERT ALL &lt;foreach collection="list" item="item" index="index" separator=" "&gt; INTO STUDENT ( NAME， AGE ) VALUES( #&#123;item.name&#125;, #&#123;item.age&#125; ) &lt;/foreach&gt;SELECT 1 FROM DUAL 批量插入多表 12345678910111213141516171819202122INSERT ALL &lt;foreach collection="carouselList" item="item" index="index" separator=" "&gt; INTO STUDENT ( NAME， AGE ) VALUES( #&#123;item.name&#125;, #&#123;item.age&#125; ) INTO STUDENT2 ( NAME2， AGE2 ) VALUES( #&#123;item.name&#125;, #&#123;item.age&#125; ) &lt;/foreach&gt;SELECT 1 FROM DUAL 3.begin end模式 分隔符是 ;插入成功，返回插入总条数始终未-11234567891011&lt;foreach collection="list" item="item" index="index" open="begin" close=";end;" separator=";"&gt; INSERT INTO STUDENT ( NAME， AGE ) VALUES( #&#123;item.name&#125;, #&#123;item.age&#125; )&lt;/foreach&gt; 二.批量更新12345678910&lt;update id="updateStudent" parameterType="java.util.Map"&gt; &lt;foreach collection="list" item="item" index="index" open="begin" close=";end;" separator=";"&gt; UPDATE STUDENT SET AGE = '0' WHERE NAME = #&#123;item.name&#125; &lt;/foreach&gt;&lt;/update&gt;]]></content>
+      <categories>
+        <category>Oracle</category>
+      </categories>
+      <tags>
+        <tag>Oracle</tag>
+        <tag>Mybatis</tag>
+      </tags>
+  </entry>
 </search>
