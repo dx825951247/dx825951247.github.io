@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Mybatis," />
 
 
 
@@ -94,17 +94,20 @@
 
 
 
-<meta name="description" content="量子广告务虚笔记小桥流水人家Jing’s BlogDoublemine岁月如歌胡闹的日子Never_yu’s Blog">
+<meta name="description" content="观点1：一般的配置项表的结构不太会变化，服务层还有业务操作，使用实体类好些，如果返回结果是多层组合，返回结构字段可能经常变化，多表联合查询，使用Map好些。">
+<meta name="keywords" content="Mybatis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mybatisReturn">
+<meta property="og:title" content="Mybatis返回结果集Map or 实体类">
 <meta property="og:url" content="www.duxing.men/2017/10/18/mybatisReturn/index.html">
 <meta property="og:site_name" content="castellan">
-<meta property="og:description" content="量子广告务虚笔记小桥流水人家Jing’s BlogDoublemine岁月如歌胡闹的日子Never_yu’s Blog">
+<meta property="og:description" content="观点1：一般的配置项表的结构不太会变化，服务层还有业务操作，使用实体类好些，如果返回结果是多层组合，返回结构字段可能经常变化，多表联合查询，使用Map好些。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-18T09:03:27.021Z">
+<meta property="og:image" content="/images/select.png">
+<meta property="og:updated_time" content="2017-10-18T11:56:11.657Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mybatisReturn">
-<meta name="twitter:description" content="量子广告务虚笔记小桥流水人家Jing’s BlogDoublemine岁月如歌胡闹的日子Never_yu’s Blog">
+<meta name="twitter:title" content="Mybatis返回结果集Map or 实体类">
+<meta name="twitter:description" content="观点1：一般的配置项表的结构不太会变化，服务层还有业务操作，使用实体类好些，如果返回结果是多层组合，返回结构字段可能经常变化，多表联合查询，使用Map好些。">
+<meta name="twitter:image" content="/images/select.png">
 
 
 
@@ -139,7 +142,7 @@
 
 
 
-  <title>mybatisReturn | castellan</title>
+  <title>Mybatis返回结果集Map or 实体类 | castellan</title>
   
 
 
@@ -299,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">mybatisReturn</h1>
+          <h1 class="post-title" itemprop="name headline">Mybatis返回结果集Map or 实体类</h1>
         
 
         <div class="post-meta">
@@ -321,6 +324,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">Mybatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -349,19 +374,13 @@
       
 
       
-        <p><a href="http://blog.ynxiu.com/2016/hexo-next-theme-optimize.html" target="_blank" rel="external">量子广告</a><br><a href="http://www.wuxubj.cn/" target="_blank" rel="external">务虚笔记</a><br><a href="https://ehlxr.me/" target="_blank" rel="external">小桥流水人家</a><br><a href="http://www.iamlj.com/" target="_blank" rel="external">Jing’s Blog</a><br><a href="https://notes.wanghao.work/" target="_blank" rel="external">Doublemine</a><br><a href="http://lovenight.github.io/" target="_blank" rel="external">岁月如歌</a><br><a href="http://hunao.info/" target="_blank" rel="external">胡闹的日子</a><br><a href="https://neveryu.github.io/" target="_blank" rel="external">Never_yu’s Blog </a><br><a id="more"></a></p>
-<p>Bootstrap Callout<br><div class="note default"><p>Content (md partial supported) </p></div>
-<div class="note primary"><p>Content (md partial supported) </p></div><br><div class="note success"><p>Content (md partial supported) </p></div>
-<div class="note info"><p>Content (md partial supported) </p></div><br><div class="note warning"><p>Content (md partial supported) </p></div>
-<div class="note danger"><p>Content (md partial supported) </p></div></p>
-<p>next标签插件<br>Code Block<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(&apos;Hello World!&apos;);</div></pre></td></tr></table></figure></p>
-<p>Pull Quote<br><blockquote class="pullquote [class]"><p>content</p>
-</blockquote></p>
-<p>代码块<br><code>hexo-generator-index</code><br><code>hexo-generator-index</code></p>
-<p>加粗<br><em>single asterisks</em></p>
-<p><em>single underscores</em></p>
-<p><strong>double asterisks</strong></p>
-<p><strong>double underscores</strong></p>
+        <h4 id="观点1："><a href="#观点1：" class="headerlink" title="观点1："></a>观点1：</h4><div class="note primary"><p>一般的配置项表的结构不太会变化，服务层还有业务操作，使用实体类好些，如果返回结果是多层组合，返回结构字段可能经常变化，<br>多表联合查询，使用Map好些。</p></div>
+<a id="more"></a>
+<h4 id="观点2："><a href="#观点2：" class="headerlink" title="观点2："></a>观点2：</h4><div class="note danger"><p>如果是多表联合查询，然后你又觉得返回方式用Map不合适，你可以自己建立个实体类，这个实力类中包含有你所要查询的<br>多表中的字段，然后在mybatis中用typeAlias指定一下，到时候就能像用一般的实体类那样使用就好。</p></div>
+<h4 id="观点3："><a href="#观点3：" class="headerlink" title="观点3："></a>观点3：</h4><div class="note success"><p>使用Map可读性较差，当你前端用Map接收传递参数和mybatis返回用Map接收和传递参数，如果回头阅读代码，还得去看前端请求或者<br>具体sql返回结果。如果是他人接手你的项目，得从头到尾得读一遍你的代码。如果你返回的是一个对象实体，那他就可以看到你返<br>回的是什么，别人也就不需要再去看你代码了，提高了开发效率。</p></div>
+<h4 id="观点4："><a href="#观点4：" class="headerlink" title="观点4："></a>观点4：</h4><div class="note info"><p>MyBatis也是ORM(Object Relational Mapping)框架的一员，使用Map从业界准则来看，不符合面向对象思想，这是一个代码规范问题。</p></div>
+<h4 id="观点5："><a href="#观点5：" class="headerlink" title="观点5："></a>观点5：</h4><div class="note warning"><p>采用实体类比Map更耗费系统资源，如下图所示：</p></div>
+<p><img src="/images/select.png">  </p>
 
       
     </div>
@@ -376,6 +395,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mybatis/" rel="tag"># Mybatis</a>
+          
+        </div>
       
 
       
@@ -450,8 +475,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -513,6 +547,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#观点1："><span class="nav-number">1.</span> <span class="nav-text">观点1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#观点2："><span class="nav-number">2.</span> <span class="nav-text">观点2：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#观点3："><span class="nav-number">3.</span> <span class="nav-text">观点3：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#观点4："><span class="nav-number">4.</span> <span class="nav-text">观点4：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#观点5："><span class="nav-number">5.</span> <span class="nav-text">观点5：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

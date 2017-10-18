@@ -13,9 +13,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[mybatisReturn]]></title>
+    <title><![CDATA[Mybatis返回结果集Map or 实体类]]></title>
     <url>%2F2017%2F10%2F18%2FmybatisReturn%2F</url>
-    <content type="text"><![CDATA[量子广告务虚笔记小桥流水人家Jing’s BlogDoublemine岁月如歌胡闹的日子Never_yu’s Blog Bootstrap CalloutContent (md partial supported) Content (md partial supported) Content (md partial supported) Content (md partial supported) Content (md partial supported) Content (md partial supported) next标签插件Code Block1alert(&apos;Hello World!&apos;); Pull Quotecontent 代码块hexo-generator-indexhexo-generator-index 加粗single asterisks single underscores double asterisks double underscores]]></content>
+    <content type="text"><![CDATA[观点1：一般的配置项表的结构不太会变化，服务层还有业务操作，使用实体类好些，如果返回结果是多层组合，返回结构字段可能经常变化，多表联合查询，使用Map好些。 观点2：如果是多表联合查询，然后你又觉得返回方式用Map不合适，你可以自己建立个实体类，这个实力类中包含有你所要查询的多表中的字段，然后在mybatis中用typeAlias指定一下，到时候就能像用一般的实体类那样使用就好。 观点3：使用Map可读性较差，当你前端用Map接收传递参数和mybatis返回用Map接收和传递参数，如果回头阅读代码，还得去看前端请求或者具体sql返回结果。如果是他人接手你的项目，得从头到尾得读一遍你的代码。如果你返回的是一个对象实体，那他就可以看到你返回的是什么，别人也就不需要再去看你代码了，提高了开发效率。 观点4：MyBatis也是ORM(Object Relational Mapping)框架的一员，使用Map从业界准则来看，不符合面向对象思想，这是一个代码规范问题。 观点5：采用实体类比Map更耗费系统资源，如下图所示：]]></content>
+      <categories>
+        <category>Mybatis</category>
+      </categories>
+      <tags>
+        <tag>Mybatis</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Oracle创建自增长字段函数]]></title>
