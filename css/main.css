@@ -1213,6 +1213,14 @@ pre .javascript .function {
   cursor: zoom-in;
   cursor: -webkit-zoom-in;
 }
+.post-body p a {
+  color: #0593d3;
+  border-bottom: none;
+}
+.post-body p a:hover {
+  color: #0477ab;
+  text-decoration: underline;
+}
 .post-body .image-caption,
 .post-body .figure .caption {
   margin: 10px auto 15px;
@@ -1808,7 +1816,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b06506;
+  background: #d4beff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2983,4 +2991,20 @@ pre .javascript .function {
 }
 .footer {
   bottom: auto;
+}
+code {
+  color: #ff7600;
+  background: #fbf7f8;
+  margin: 2px;
+}
+.highlight,
+pre {
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 3px;
+}
+.highlight,
+code,
+pre {
+  border: 1px solid #d6d6d6;
 }

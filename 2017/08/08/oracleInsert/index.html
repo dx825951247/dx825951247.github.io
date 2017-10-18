@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="一.批量插入三种方式 1.使用union all  sql中没有VALUES 中的select…插入数据…from dual1234567891011INSERT INTO STUDENT　(　　NAME，　　AGE　)&amp;lt;foreach collection=&quot;templateDetial&quot; item=&quot;item&quot; index=&quot;index&quot; separator=&quot;union all&quot; &amp;g">
+<meta name="description" content="一.批量插入三种方式 1.使用union all  sql中没有VALUES 中的select…插入数据…from dual">
 <meta name="keywords" content="Oracle,Mybatis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Oracle数据库批量插入、批量更新">
 <meta property="og:url" content="www.duxing.men/2017/08/08/oracleInsert/index.html">
 <meta property="og:site_name" content="castellan">
-<meta property="og:description" content="一.批量插入三种方式 1.使用union all  sql中没有VALUES 中的select…插入数据…from dual1234567891011INSERT INTO STUDENT　(　　NAME，　　AGE　)&amp;lt;foreach collection=&quot;templateDetial&quot; item=&quot;item&quot; index=&quot;index&quot; separator=&quot;union all&quot; &amp;g">
+<meta property="og:description" content="一.批量插入三种方式 1.使用union all  sql中没有VALUES 中的select…插入数据…from dual">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-17T09:53:27.514Z">
+<meta property="og:updated_time" content="2017-10-18T09:20:22.489Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Oracle数据库批量插入、批量更新">
-<meta name="twitter:description" content="一.批量插入三种方式 1.使用union all  sql中没有VALUES 中的select…插入数据…from dual1234567891011INSERT INTO STUDENT　(　　NAME，　　AGE　)&amp;lt;foreach collection=&quot;templateDetial&quot; item=&quot;item&quot; index=&quot;index&quot; separator=&quot;union all&quot; &amp;g">
+<meta name="twitter:description" content="一.批量插入三种方式 1.使用union all  sql中没有VALUES 中的select…插入数据…from dual">
 
 
 
@@ -376,14 +376,15 @@
 <h2 id="1-使用union-all"><a href="#1-使用union-all" class="headerlink" title="1.使用union all"></a>1.使用union all</h2></blockquote>
 <ul>
 <li>sql中没有VALUES</li>
-<li><foreach>中的select…插入数据…from dual<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">INSERT INTO STUDENT</div><div class="line">　(</div><div class="line">　　NAME，</div><div class="line">　　AGE</div><div class="line">　)</div><div class="line"><span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"templateDetial"</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">separator</span>=<span class="string">"union all"</span> &gt;</span></div><div class="line">　SELECT </div><div class="line">　　#&#123;item.name&#125;, </div><div class="line">　　#&#123;item.age&#125;</div><div class="line">　FROM DUAL	</div><div class="line"><span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></div></pre></td></tr></table></figure>
+<li><foreach>中的select…插入数据…from dual<a id="more"></a>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">2017/10/18</div><div class="line">INSERT INTO STUDENT</div><div class="line">　(</div><div class="line">　　NAME，</div><div class="line">　　AGE</div><div class="line">　)</div><div class="line"><span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"templateDetial"</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">separator</span>=<span class="string">"union all"</span> &gt;</span></div><div class="line">　SELECT </div><div class="line">　　#&#123;item.name&#125;, </div><div class="line">　　#&#123;item.age&#125;</div><div class="line">　FROM DUAL	</div><div class="line"><span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></div></pre></td></tr></table></figure>
 </foreach></li>
 </ul>
 <hr>
 <blockquote>
 <h2 id="2-insert-all"><a href="#2-insert-all" class="headerlink" title="2.insert all"></a>2.insert all</h2></blockquote>
 <ul>
-<li>sql中有VALUES</li>
+<li>sql中有<code>VALUES</code></li>
 <li><p>分隔符是空格,这种方式可以返回插入总条数</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">INSERT ALL</div><div class="line">　<span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"list"</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">separator</span>=<span class="string">" "</span>&gt;</span></div><div class="line">　　INTO STUDENT</div><div class="line">　　　(</div><div class="line">　　　　NAME，</div><div class="line">　　　　AGE</div><div class="line">　　　)</div><div class="line">　　　　VALUES(</div><div class="line">	#&#123;item.name&#125;, </div><div class="line">　　　　#&#123;item.age&#125;</div><div class="line">　　　)</div><div class="line">　<span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></div><div class="line">SELECT 1 FROM DUAL</div></pre></td></tr></table></figure>
 </li>
@@ -399,7 +400,7 @@
 </li>
 </ul>
 <hr>
-<h1 id="二-批量删除"><a href="#二-批量删除" class="headerlink" title="二.批量删除"></a>二.批量删除</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">"updateStudent"</span> <span class="attr">parameterType</span>=<span class="string">"java.util.Map"</span>&gt;</span></div><div class="line">　<span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"list"</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">open</span>=<span class="string">"begin"</span> <span class="attr">close</span>=<span class="string">";end;"</span> <span class="attr">separator</span>=<span class="string">";"</span>&gt;</span></div><div class="line">　　UPDATE </div><div class="line">　　　STUDENT</div><div class="line">　　SET </div><div class="line">　　　AGE = '0'</div><div class="line">　　WHERE</div><div class="line">　　　NAME = #&#123;item.name&#125; </div><div class="line">　<span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">update</span>&gt;</span></div></pre></td></tr></table></figure>
+<h1 id="二-批量更新"><a href="#二-批量更新" class="headerlink" title="二.批量更新"></a>二.批量更新</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">"updateStudent"</span> <span class="attr">parameterType</span>=<span class="string">"java.util.Map"</span>&gt;</span></div><div class="line">　<span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"list"</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">open</span>=<span class="string">"begin"</span> <span class="attr">close</span>=<span class="string">";end;"</span> <span class="attr">separator</span>=<span class="string">";"</span>&gt;</span></div><div class="line">　　UPDATE </div><div class="line">　　　STUDENT</div><div class="line">　　SET </div><div class="line">　　　AGE = '0'</div><div class="line">　　WHERE</div><div class="line">　　　NAME = #&#123;item.name&#125; </div><div class="line">　<span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">update</span>&gt;</span></div></pre></td></tr></table></figure>
       
     </div>
     
@@ -516,7 +517,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -527,7 +528,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -538,7 +539,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -573,7 +574,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-批量插入三种方式"><span class="nav-number">1.</span> <span class="nav-text">一.批量插入三种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-使用union-all"><span class="nav-number">1.1.</span> <span class="nav-text">1.使用union all</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-insert-all"><span class="nav-number">1.2.</span> <span class="nav-text">2.insert all</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-begin-end模式"><span class="nav-number">1.3.</span> <span class="nav-text">3.begin end模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-批量删除"><span class="nav-number">2.</span> <span class="nav-text">二.批量删除</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-批量插入三种方式"><span class="nav-number">1.</span> <span class="nav-text">一.批量插入三种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-使用union-all"><span class="nav-number">1.1.</span> <span class="nav-text">1.使用union all</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-insert-all"><span class="nav-number">1.2.</span> <span class="nav-text">2.insert all</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-begin-end模式"><span class="nav-number">1.3.</span> <span class="nav-text">3.begin end模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-批量更新"><span class="nav-number">2.</span> <span class="nav-text">二.批量更新</span></a></li></ol></div>
             
 
           </div>
@@ -593,7 +594,8 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
   
   &copy; 
   <span itemprop="copyrightYear">2017</span>
@@ -604,6 +606,11 @@
 </div>
 
 
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
 <div class="powered-by">
   由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>

@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="一.创建序列号1234567create sequence SEQ_VEN_CODEminvalue 1maxvalue 999999999999start with 74increment by 1nocachecycle; 二.创建自增长函数12345678910111213141516171819CREATE OR REPLACE FUNCTION FUN_VEN_CODE(VEN_TYPE">
+<meta name="description" content="一.创建序列号">
 <meta name="keywords" content="Oracle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Oracle创建自增长字段函数">
 <meta property="og:url" content="www.duxing.men/2017/10/17/increaseIdOracle/index.html">
 <meta property="og:site_name" content="castellan">
-<meta property="og:description" content="一.创建序列号1234567create sequence SEQ_VEN_CODEminvalue 1maxvalue 999999999999start with 74increment by 1nocachecycle; 二.创建自增长函数12345678910111213141516171819CREATE OR REPLACE FUNCTION FUN_VEN_CODE(VEN_TYPE">
+<meta property="og:description" content="一.创建序列号">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-17T09:22:47.749Z">
+<meta property="og:updated_time" content="2017-10-18T09:14:49.379Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Oracle创建自增长字段函数">
-<meta name="twitter:description" content="一.创建序列号1234567create sequence SEQ_VEN_CODEminvalue 1maxvalue 999999999999start with 74increment by 1nocachecycle; 二.创建自增长函数12345678910111213141516171819CREATE OR REPLACE FUNCTION FUN_VEN_CODE(VEN_TYPE">
+<meta name="twitter:description" content="一.创建序列号">
 
 
 
@@ -372,16 +372,12 @@
       
 
       
-        <p>一.创建序列号<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">create sequence SEQ_VEN_CODE</div><div class="line">minvalue 1</div><div class="line">maxvalue 999999999999</div><div class="line">start with 74</div><div class="line">increment by 1</div><div class="line">nocache</div><div class="line">cycle;</div></pre></td></tr></table></figure></p>
+        <p>一.创建序列号<br><a id="more"></a><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">create sequence SEQ_VEN_CODE</div><div class="line">minvalue 1</div><div class="line">maxvalue 999999999999</div><div class="line">start with 74</div><div class="line">increment by 1</div><div class="line">nocache</div><div class="line">cycle;</div></pre></td></tr></table></figure></p>
 <p>二.创建自增长函数<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">CREATE OR REPLACE FUNCTION FUN_VEN_CODE(VEN_TYPE VARCHAR2) RETURN VARCHAR2 IS</div><div class="line">  VEN_CODE VARCHAR2(30);</div><div class="line">BEGIN</div><div class="line">  IF VEN_TYPE = 'LOGISTICS' THEN</div><div class="line">    SELECT 'L' || LTRIM(TO_CHAR(SYSDATE, 'yyyymmdd')) ||</div><div class="line">           LPAD(SEQ_VEN_CODE.NEXTVAL, 5, '0')</div><div class="line">      INTO VEN_CODE</div><div class="line">      FROM DUAL;</div><div class="line">  ELSIF VEN_TYPE = 'GOODS' THEN</div><div class="line">    SELECT 'G' || LTRIM(TO_CHAR(SYSDATE, 'yyyymmdd')) ||</div><div class="line">           LPAD(SEQ_VEN_CODE.NEXTVAL, 5, '0')</div><div class="line">      INTO VEN_CODE</div><div class="line">      FROM DUAL;</div><div class="line">  END IF;</div><div class="line">  RETURN TRIM(VEN_CODE);</div><div class="line">EXCEPTION</div><div class="line">  WHEN OTHERS THEN</div><div class="line">    RETURN '0';</div><div class="line">END;</div></pre></td></tr></table></figure></p>
 <p>三.查询</p>
-<blockquote>
-<p>select FUN_VEN_CODE(‘LOGISTICS’) from dual</p>
-</blockquote>
+<p><code>select FUN_VEN_CODE(&#39;LOGISTICS&#39;) from dual</code></p>
 <p>结果：L2017101700072</p>
-<blockquote>
-<p>select FUN_VEN_CODE(‘GOODS’) from dual</p>
-</blockquote>
+<p><code>select FUN_VEN_CODE(&#39;GOODS&#39;) from dual</code></p>
 <p>结果：G2017101700073 </p>
 
       
@@ -422,6 +418,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/18/mybatisReturn/" rel="prev" title="mybatisReturn">
+                mybatisReturn <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -489,7 +489,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -500,7 +500,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -511,7 +511,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -550,7 +550,8 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
   
   &copy; 
   <span itemprop="copyrightYear">2017</span>
@@ -561,6 +562,11 @@
 </div>
 
 
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
 <div class="powered-by">
   由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>

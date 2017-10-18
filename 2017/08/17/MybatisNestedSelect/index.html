@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="resultMap constructor - 类在实例化时,用来注入结果到构造方法中 dArg - ID 参数;标记结果作为 ID 可以帮助提高整体效能 arg - 注入到构造方法的一个普通结果   id – 一个 ID 结果;标记结果作为 ID 可以帮助提高整体效能 result – 注入到字段或 JavaBean 属性的普通结果 association – 一个复杂的类型关联;许多结果将包成">
+<meta name="description" content="resultMap constructor - 类在实例化时,用来注入结果到构造方法中 dArg - ID 参数;标记结果作为 ID 可以帮助提高整体效能 arg - 注入到构造方法的一个普通结果">
 <meta name="keywords" content="Oracle,Mybatis,管理查询">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mybatis嵌套查询传入多个参数">
 <meta property="og:url" content="www.duxing.men/2017/08/17/MybatisNestedSelect/index.html">
 <meta property="og:site_name" content="castellan">
-<meta property="og:description" content="resultMap constructor - 类在实例化时,用来注入结果到构造方法中 dArg - ID 参数;标记结果作为 ID 可以帮助提高整体效能 arg - 注入到构造方法的一个普通结果   id – 一个 ID 结果;标记结果作为 ID 可以帮助提高整体效能 result – 注入到字段或 JavaBean 属性的普通结果 association – 一个复杂的类型关联;许多结果将包成">
+<meta property="og:description" content="resultMap constructor - 类在实例化时,用来注入结果到构造方法中 dArg - ID 参数;标记结果作为 ID 可以帮助提高整体效能 arg - 注入到构造方法的一个普通结果">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-24T14:16:42.582Z">
+<meta property="og:updated_time" content="2017-10-18T09:14:21.219Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mybatis嵌套查询传入多个参数">
-<meta name="twitter:description" content="resultMap constructor - 类在实例化时,用来注入结果到构造方法中 dArg - ID 参数;标记结果作为 ID 可以帮助提高整体效能 arg - 注入到构造方法的一个普通结果   id – 一个 ID 结果;标记结果作为 ID 可以帮助提高整体效能 result – 注入到字段或 JavaBean 属性的普通结果 association – 一个复杂的类型关联;许多结果将包成">
+<meta name="twitter:description" content="resultMap constructor - 类在实例化时,用来注入结果到构造方法中 dArg - ID 参数;标记结果作为 ID 可以帮助提高整体效能 arg - 注入到构造方法的一个普通结果">
 
 
 
@@ -373,22 +373,22 @@
 
       
         <h1 id="resultMap"><a href="#resultMap" class="headerlink" title="resultMap"></a>resultMap</h1><ul>
-<li>constructor - 类在实例化时,用来注入结果到构造方法中<ul>
-<li>dArg - ID 参数;标记结果作为 ID 可以帮助提高整体效能</li>
-<li>arg - 注入到构造方法的一个普通结果</li>
+<li><code>constructor</code> - 类在实例化时,用来注入结果到构造方法中<ul>
+<li><code>dArg</code> - ID 参数;标记结果作为 ID 可以帮助提高整体效能</li>
+<li><code>arg</code> - 注入到构造方法的一个普通结果<a id="more"></a></li>
 </ul>
 </li>
-<li>id – 一个 ID 结果;标记结果作为 ID 可以帮助提高整体效能</li>
-<li>result – 注入到字段或 JavaBean 属性的普通结果</li>
-<li>association – 一个复杂的类型关联;许多结果将包成这种类型<br>  嵌入结果映射 – 结果映射自身的关联,或者参考一个</li>
-<li><p>collection – 复杂类型的集<br>  嵌套嵌入结果映射, 结果映射自身的集,或者参考一个</p>
+<li><code>id</code> – 一个 ID 结果;标记结果作为 ID 可以帮助提高整体效能</li>
+<li><code>result</code> – 注入到字段或 JavaBean 属性的普通结果</li>
+<li><code>association</code> – 一个复杂的类型关联;许多结果将包成这种类型<br>  嵌入结果映射 – 结果映射自身的关联,或者参考一个</li>
+<li><p><code>collection</code> – 复杂类型的集<br>  嵌套嵌入结果映射, 结果映射自身的集,或者参考一个</p>
 <blockquote>
-<p>collection标签中的select属性，通过这个属性，通过ID引用另一个加载复杂类型的映射语句。<br>从指定列属性中返回的值，将作为参数设置给目标select 语句。<br>注意：在处理组合键时，也就是传入多个参数时，可以使用<code>column=”{pro1=col1,pro2=col2}”</code>这样的语法，这就会把prop1和prop2设置到目标嵌套语句的参数对象中，在子查询中就可以作为参数使用#{pro1},#{pro2}。</p>
+<p><code>collection</code>标签中的<code>select</code>属性，通过这个属性，通过ID引用另一个加载复杂类型的映射语句。<br>从指定列属性中返回的值，将作为参数设置给目标<code>select</code> 语句。<br>注意：在处理组合键时，也就是传入多个参数时，可以使用<code>column=”{pro1=col1,pro2=col2}”</code>这样的语法，这就会把<code>prop1</code>和<code>prop2</code>设置到目标嵌套语句的参数对象中，在子查询中就可以作为参数使用<code>#{pro1}</code>,<code>#{pro2}</code>。</p>
 </blockquote>
 </li>
-<li><p>discriminator – 使用结果值来决定使用哪个结果映射</p>
+<li><p><code>discriminator</code> – 使用结果值来决定使用哪个结果映射</p>
 <ul>
-<li>case – 基于某些值的结果映射<br>嵌入结果映射 – 这种情形结果也映射它本身,因此可以包含很多相 同的元素,或者它可以参照一个外部的结果映射。</li>
+<li><code>case</code> – 基于某些值的结果映射<br>嵌入结果映射 – 这种情形结果也映射它本身,因此可以包含很多相 同的元素,或者它可以参照一个外部的结果映射。</li>
 </ul>
 </li>
 </ul>
@@ -516,7 +516,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -527,7 +527,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -538,7 +538,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -593,7 +593,8 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
   
   &copy; 
   <span itemprop="copyrightYear">2017</span>
@@ -604,6 +605,11 @@
 </div>
 
 
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
 <div class="powered-by">
   由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
