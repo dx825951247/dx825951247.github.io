@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="castellan">
 <meta property="og:description" content="一、异常分类在web系统开发中，异常可大致分为:  系统异常:软件的缺陷，客户端对此类异常是无能为力的,系统内部未知异常。 业务异常用户未按正常流程操作导致的异常。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-18T12:39:54.623Z">
+<meta property="og:updated_time" content="2017-10-23T01:58:42.666Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="业务流程异常处理">
 <meta name="twitter:description" content="一、异常分类在web系统开发中，异常可大致分为:  系统异常:软件的缺陷，客户端对此类异常是无能为力的,系统内部未知异常。 业务异常用户未按正常流程操作导致的异常。">
@@ -382,6 +382,7 @@
 <p>2.业务异常可以采用<code>try{}catch{}</code>处理，或者采用<code>if</code>加错误码判断处理<br>如果采用<code>try{}catch{}</code>方式，和上面方式一致，下面介绍采用<code>if</code>加错误码处理,定义一个对象，每次处理加上返回码和错误信息提示。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ReturnResultObj obj = <span class="keyword">new</span> ReturnResultObj();</div><div class="line">obj.setCode(<span class="string">"101112101"</span>);</div><div class="line">obj.setMessage(<span class="string">"name不能为空!"</span>);</div><div class="line">obj.setData(<span class="string">""</span>);</div><div class="line"><span class="keyword">return</span> obj;</div></pre></td></tr></table></figure></p>
 <h2 id="三、两种方式优缺点："><a href="#三、两种方式优缺点：" class="headerlink" title="三、两种方式优缺点："></a>三、两种方式优缺点：</h2><ul>
 <li>用<code>if</code>加错误码控制业务流程,需要对每个接口的返回都要做一个错误码的校验,判断的代码会遍布在你的业务代码里面。优点就是对调用方,不必对你的接口进行异常校验,因为你的接口只可能返回「正确」或者「错误」,代码可读性高，但是随之带来的代码显得很臃肿，错误码集中在代码里，后期维护困难，但在效率上面也会更加高一点。对某些人来说,用错误码来控制业务流程更能符合「异常」的语义。</li>
+<li>用<code>if</code>加错误码控制业务流程,因为没有抛出RuntimeException，如果在写操作之后加入业务判断，会导致事务无法回滚，因此写操作之前进行所有业务判断。</li>
 <li>用异常来控制业务流程,可以把错误处理集中在一处,对客户端的代码编写更加友好,代码清晰简洁，在业务代码里面不会有很多错误码的判断。缺点就是创建异常堆栈是需要时间和空间的,异常处理性能开销在于<br>-是一个synchronized方法(主因)<br>-需要填充线程运行堆栈信息<br>但是可以通过复写业务异常基类的方法<code>Throwable.fillInStackTrace()</code>来提示性能。<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Throwable <span class="title">fillInStackTrace</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -505,7 +506,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
