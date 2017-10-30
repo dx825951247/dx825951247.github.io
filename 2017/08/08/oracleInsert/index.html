@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="一.批量插入三种方式 1.使用union all  sql中没有VALUES 中的select…插入数据…from dual">
+<meta name="description" content="一.xml中批量插入三种方式 1.使用union all  sql中没有VALUES 中的select…插入数据…from dual">
 <meta name="keywords" content="Oracle,Mybatis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Oracle数据库批量插入、批量更新">
 <meta property="og:url" content="www.duxing.men/2017/08/08/oracleInsert/index.html">
 <meta property="og:site_name" content="castellan">
-<meta property="og:description" content="一.批量插入三种方式 1.使用union all  sql中没有VALUES 中的select…插入数据…from dual">
+<meta property="og:description" content="一.xml中批量插入三种方式 1.使用union all  sql中没有VALUES 中的select…插入数据…from dual">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-18T09:20:22.489Z">
+<meta property="og:updated_time" content="2017-10-30T06:29:28.368Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Oracle数据库批量插入、批量更新">
-<meta name="twitter:description" content="一.批量插入三种方式 1.使用union all  sql中没有VALUES 中的select…插入数据…from dual">
+<meta name="twitter:description" content="一.xml中批量插入三种方式 1.使用union all  sql中没有VALUES 中的select…插入数据…from dual">
 
 
 
@@ -372,7 +372,7 @@
       
 
       
-        <h1 id="一-批量插入三种方式"><a href="#一-批量插入三种方式" class="headerlink" title="一.批量插入三种方式"></a>一.批量插入三种方式</h1><blockquote>
+        <h1 id="一-xml中批量插入三种方式"><a href="#一-xml中批量插入三种方式" class="headerlink" title="一.xml中批量插入三种方式"></a>一.xml中批量插入三种方式</h1><blockquote>
 <h2 id="1-使用union-all"><a href="#1-使用union-all" class="headerlink" title="1.使用union all"></a>1.使用union all</h2></blockquote>
 <ul>
 <li>sql中没有VALUES</li>
@@ -400,7 +400,17 @@
 </li>
 </ul>
 <hr>
-<h1 id="二-批量更新"><a href="#二-批量更新" class="headerlink" title="二.批量更新"></a>二.批量更新</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">"updateStudent"</span> <span class="attr">parameterType</span>=<span class="string">"java.util.Map"</span>&gt;</span></div><div class="line">　<span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"list"</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">open</span>=<span class="string">"begin"</span> <span class="attr">close</span>=<span class="string">";end;"</span> <span class="attr">separator</span>=<span class="string">";"</span>&gt;</span></div><div class="line">　　UPDATE </div><div class="line">　　　STUDENT</div><div class="line">　　SET </div><div class="line">　　　AGE = '0'</div><div class="line">　　WHERE</div><div class="line">　　　NAME = #&#123;item.name&#125; </div><div class="line">　<span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">update</span>&gt;</span></div></pre></td></tr></table></figure>
+<h1 id="二-在代码中使用batch模式-效率最高"><a href="#二-在代码中使用batch模式-效率最高" class="headerlink" title="二.在代码中使用batch模式,效率最高"></a>二.在代码中使用batch模式,效率最高</h1><p>Mybatis有三种执行器：</p>
+<ul>
+<li>SIMPLE是普通的执行器，相当于JDBC的<code>stmt.execute(sql)</code></li>
+<li>REUSE执行器会重用预处理语句(<code>prepared statements</code>)，相当于JDBC重用一条sql，再通过stmt传入多项参数值，然后执行<code>stmt.executeUpdate()</code>或<code>stmt.executeBatch()</code></li>
+<li>BATCH执行器将重用语句并执行批量更新，相当于JDBC语句的<code>stmt.addBatch(sql)</code>，即仅仅是将执行SQL加入到批量计划。当插入主键时不会抛出主键冲突等运行时异常，而只有临近<code>commit</code>前执行<code>stmt.execteBatch()</code>后才会抛出异常。<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</div><div class="line">　<span class="comment">//新获取一个模式为BATCH，自动提交为false的session</span></div><div class="line">　<span class="comment">//如果自动提交设置为true,将无法控制提交的条数，改为最后统一提交，可能导致内存溢出</span></div><div class="line">　SqlSession session = sqlSessionTemplate.getSqlSessionFactory().openSession(ExecutorType.BATCH, <span class="keyword">false</span>);</div><div class="line">　<span class="comment">//通过新的session获取mapper</span></div><div class="line">　testMapper = session.getMapper(testMapper.class);</div><div class="line">　<span class="keyword">int</span> size = <span class="number">10000</span>;</div><div class="line">　<span class="keyword">try</span> &#123;</div><div class="line">　　<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</div><div class="line">　　　Test test = <span class="keyword">new</span> Test();</div><div class="line">　　　test.setName(String.valueOf(System.currentTimeMillis()));</div><div class="line">　　　testMapper.insert(test);</div><div class="line">　　　<span class="keyword">if</span> (i % <span class="number">1000</span> == <span class="number">0</span> || i == size - <span class="number">1</span>) &#123;</div><div class="line">　　　　<span class="comment">//手动每1000个一提交，提交后无法回滚</span></div><div class="line">　　　　session.commit();</div><div class="line">　　　　<span class="comment">//清理缓存，防止溢出</span></div><div class="line">　　　　session.clearCache();</div><div class="line">　　　&#125;</div><div class="line">　　&#125;</div><div class="line">　&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">　　<span class="comment">//没有提交的数据可以回滚</span></div><div class="line">　　session.rollback();</div><div class="line">　&#125; <span class="keyword">finally</span> &#123;</div><div class="line">　　session.close();</div><div class="line">　&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h1 id="三-批量更新"><a href="#三-批量更新" class="headerlink" title="三.批量更新"></a>三.批量更新</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">"updateStudent"</span> <span class="attr">parameterType</span>=<span class="string">"java.util.Map"</span>&gt;</span></div><div class="line">　<span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"list"</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">open</span>=<span class="string">"begin"</span> <span class="attr">close</span>=<span class="string">";end;"</span> <span class="attr">separator</span>=<span class="string">";"</span>&gt;</span></div><div class="line">　　UPDATE </div><div class="line">　　　STUDENT</div><div class="line">　　SET </div><div class="line">　　　AGE = '0'</div><div class="line">　　WHERE</div><div class="line">　　　NAME = #&#123;item.name&#125; </div><div class="line">　<span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">update</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>参考链接<br><a href="http://www.cnblogs.com/duanxz/p/3838352.html" target="_blank" rel="external">MyBatis的几种批量操作</a><br><a href="http://www.blogjava.net/diggbag/articles/mybatis.html" target="_blank" rel="external">关于Mybatis的Batch模式性能测试及结论</a></p>
+
       
     </div>
     
@@ -574,7 +584,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-批量插入三种方式"><span class="nav-number">1.</span> <span class="nav-text">一.批量插入三种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-使用union-all"><span class="nav-number">1.1.</span> <span class="nav-text">1.使用union all</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-insert-all"><span class="nav-number">1.2.</span> <span class="nav-text">2.insert all</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-begin-end模式"><span class="nav-number">1.3.</span> <span class="nav-text">3.begin end模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-批量更新"><span class="nav-number">2.</span> <span class="nav-text">二.批量更新</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-xml中批量插入三种方式"><span class="nav-number">1.</span> <span class="nav-text">一.xml中批量插入三种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-使用union-all"><span class="nav-number">1.1.</span> <span class="nav-text">1.使用union all</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-insert-all"><span class="nav-number">1.2.</span> <span class="nav-text">2.insert all</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-begin-end模式"><span class="nav-number">1.3.</span> <span class="nav-text">3.begin end模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-在代码中使用batch模式-效率最高"><span class="nav-number">2.</span> <span class="nav-text">二.在代码中使用batch模式,效率最高</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-批量更新"><span class="nav-number">3.</span> <span class="nav-text">三.批量更新</span></a></li></ol></div>
             
 
           </div>
