@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>www.duxing.men/nextPage.html</loc>
+    
+    <lastmod>2017-10-31T07:28:27.063Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>www.duxing.men/serviceException.html</loc>
     
     <lastmod>2017-10-30T08:50:43.519Z</lastmod>
@@ -40,13 +47,6 @@
     <loc>www.duxing.men/MybatisNestedSelect.html</loc>
     
     <lastmod>2017-10-18T09:14:21.219Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>www.duxing.men/nextPage.html</loc>
-    
-    <lastmod>2017-10-18T09:12:08.454Z</lastmod>
     
   </url>
   
