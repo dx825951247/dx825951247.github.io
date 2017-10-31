@@ -1,0 +1,48 @@
+---
+title: Next博客链接与常用Markdown语法
+date: 2017-10-18 17:01:39
+tags: [Next, Markdown]
+categories: Next
+---
+[量子广告](http://blog.ynxiu.com/2016/hexo-next-theme-optimize.html)
+[务虚笔记](http://www.wuxubj.cn/)
+[小桥流水人家](https://ehlxr.me/)
+[Jing’s Blog](http://www.iamlj.com/)
+[Doublemine](https://notes.wanghao.work/)
+[岁月如歌](http://lovenight.github.io/)
+[胡闹的日子](http://hunao.info/)
+[Never_yu’s Blog ](https://neveryu.github.io/)
+[SEO优化博客](http://blog.csdn.net/sunshine940326/article/details/70936988)
+<!--more-->
+
+Bootstrap Callout 
+{% note default %} Content (md partial supported) {% endnote %}
+{% note primary %} Content (md partial supported) {% endnote %}
+{% note success %} Content (md partial supported) {% endnote %}
+{% note info %} Content (md partial supported) {% endnote %}
+{% note warning %} Content (md partial supported) {% endnote %}
+{% note danger %} Content (md partial supported) {% endnote %}
+
+Next标签插件
+Code Block
+{% codeblock %}
+alert('Hello World!');
+{% endcodeblock %}
+
+Pull Quote
+{% pullquote [class] %}
+content
+{% endpullquote %}
+
+代码块
+<code>hexo-generator-index</code>
+`hexo-generator-index`
+
+加粗
+*single asterisks*
+
+_single underscores_
+
+**double asterisks**
+
+__double underscores__
